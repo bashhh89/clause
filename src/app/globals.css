@@ -1,0 +1,542 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --muted-foreground: oklch(0.551 0.027 264.364);
+  --border: oklch(0.928 0.006 264.531);
+  --card-background: #0a0a0a;
+  --card-foreground: oklch(0.13 0.028 261.692);
+  --accent: oklch(0.967 0.003 264.542);
+  --accent-foreground: oklch(0.21 0.034 264.665);
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.13 0.028 261.692);
+  --card: oklch(1 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.13 0.028 261.692);
+  --primary: oklch(0.21 0.034 264.665);
+  --primary-foreground: oklch(0.985 0.002 247.839);
+  --secondary: oklch(0.967 0.003 264.542);
+  --secondary-foreground: oklch(0.21 0.034 264.665);
+  --muted: oklch(0.967 0.003 264.542);
+  --destructive: oklch(0.577 0.245 27.325);
+  --input: oklch(0.928 0.006 264.531);
+  --ring: oklch(0.707 0.022 261.325);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0.002 247.839);
+  --sidebar-foreground: oklch(0.13 0.028 261.692);
+  --sidebar-primary: oklch(0.21 0.034 264.665);
+  --sidebar-primary-foreground: oklch(0.985 0.002 247.839);
+  --sidebar-accent: oklch(0.967 0.003 264.542);
+  --sidebar-accent-foreground: oklch(0.21 0.034 264.665);
+  --sidebar-border: oklch(0.928 0.006 264.531);
+  --sidebar-ring: oklch(0.707 0.022 261.325);
+
+  /* Professional Theme Colors */
+  --professional-blue: oklch(0.62 0.15 220);
+  --professional-dark-blue: oklch(0.48 0.12 220);
+  --professional-gray: oklch(0.55 0.01 260);
+  --professional-light-gray: oklch(0.95 0.01 260);
+  --professional-accent: oklch(0.65 0.08 280);
+  --professional-dark-bg: oklch(0.08 0.02 260);
+  --professional-card-bg: oklch(0.12 0.02 260);
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.01em;
+}
+
+code, pre, .monospace {
+  font-family: 'JetBrains Mono', SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-feature-settings: "liga" 0;
+}
+
+/* Improve text styling */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+/* Improve button and input text */
+button, input, textarea, select {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Improve chat interface text */
+.text-xs {
+  letter-spacing: 0;
+}
+
+.text-sm {
+  letter-spacing: -0.01em;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+.dark {
+  --background: oklch(0.13 0.028 261.692);
+  --foreground: oklch(0.985 0.002 247.839);
+  --card: oklch(0.21 0.034 264.665);
+  --card-foreground: oklch(0.985 0.002 247.839);
+  --popover: oklch(0.21 0.034 264.665);
+  --popover-foreground: oklch(0.985 0.002 247.839);
+  --primary: oklch(0.928 0.006 264.531);
+  --primary-foreground: oklch(0.21 0.034 264.665);
+  --secondary: oklch(0.278 0.033 256.848);
+  --secondary-foreground: oklch(0.985 0.002 247.839);
+  --muted: oklch(0.278 0.033 256.848);
+  --muted-foreground: oklch(0.707 0.022 261.325);
+  --accent: oklch(0.278 0.033 256.848);
+  --accent-foreground: oklch(0.985 0.002 247.839);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.21 0.034 264.665);
+  --sidebar-foreground: oklch(0.985 0.002 247.839);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0.002 247.839);
+  --sidebar-accent: oklch(0.278 0.033 256.848);
+  --sidebar-accent-foreground: oklch(0.985 0.002 247.839);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply text-foreground;
+    background-color: #000000 !important;
+  }
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    /* --- Basic Theme Variables --- */
+    /* Use existing shadcn variables as initial values */
+    --theme-bg-color: hsl(var(--card));
+    --theme-text-color: hsl(var(--card-foreground));
+    --theme-primary-color: hsl(var(--primary));
+    --theme-primary-foreground-color: hsl(var(--primary-foreground)); /* Added for contrast */
+
+    /* Define font families (use existing font variables if available, or define directly) */
+    /* Example assuming --font-sans exists from next/font */
+    --theme-body-font: var(--font-sans);
+    /* Example defining a specific font - install if needed */
+    --theme-heading-font: 'Inter', var(--font-sans); /* Example: Use Inter, fallback to sans */
+
+    /* Define base presentation radius */
+     --presentation-border-radius: 0.5rem; /* Example radius */
+
+    /* Add more variables later (e.g., secondary color, link color) */
+  }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  /* --- Light Theme Definition --- */
+  .theme-light {
+    --theme-bg-color: hsl(0 0% 100%); /* White background */
+    --theme-text-color: hsl(var(--foreground)); /* Default foreground text */
+    --theme-primary-color: hsl(var(--primary)); /* Keep primary or change */
+    --theme-primary-foreground-color: hsl(var(--primary-foreground));
+    --theme-body-font: var(--font-sans); /* Can change fonts per theme too */
+    --theme-heading-font: 'Inter', var(--font-sans);
+     --presentation-border-radius: 0.5rem; /* Keep radius or change */
+    /* Override other shadcn variables if needed for consistency */
+     --card: 0 0% 100%;
+     --card-foreground: 222.2 84% 4.9%;
+     /* etc. */
+
+     /* Override shadcn dark mode variables for light theme */
+     --background: 0 0% 100%; /* Use light background */
+     --foreground: 222.2 84% 4.9%; /* Use dark foreground */
+     /* Override others as needed... */
+     --popover: 0 0% 100%;
+     --popover-foreground: 222.2 84% 4.9%;
+     --primary: 222.2 47.4% 11.2%;
+     --primary-foreground: 210 40% 98%;
+     --secondary: 210 40% 96.1%;
+     --secondary-foreground: 222.2 47.4% 11.2%;
+     --muted: 210 40% 96.1%;
+     --muted-foreground: 215.4 16.3% 46.9%;
+     --accent: 210 40% 96.1%;
+     --accent-foreground: 222.2 47.4% 11.2%;
+     --destructive: 0 84.2% 60.2%;
+     --destructive-foreground: 210 40% 98%;
+     --border: 214.3 31.8% 91.4%;
+     --input: 214.3 31.8% 91.4%;
+     --ring: 222.2 84% 4.9%;
+  }
+
+  /* --- Optional: Another Theme --- */
+  /* .theme-blue { ... define different variables ... } */
+
+  /* Apply a default theme class to the body if needed, or manage via state later */
+  body {
+     /* Example: @apply theme-default; */
+     /* Or manage theme class higher up in layout.tsx */
+  }
+}
+
+/* Assistant UI Dark Mode Overrides */
+:is(.thread, .thread-list, .thread-container, .thread-input) {
+  background-color: #0a0a0a !important;
+  color: white !important;
+  border-color: #333333 !important;
+}
+
+.thread-message-assistant {
+  background-color: #111111 !important;
+  color: white !important;
+  border: 1px solid #333333 !important;
+}
+
+.thread-message-user {
+  background-color: #0a0a0a !important;
+  color: white !important;
+  border: 1px solid #333333 !important;
+}
+
+.thread-input textarea, 
+.thread-input input {
+  background-color: #111111 !important;
+  color: white !important;
+  border-color: #333333 !important;
+}
+
+.thread-input textarea::placeholder,
+.thread-input input::placeholder {
+  color: #666666 !important;
+}
+
+/* Make all SVG icons white */
+:is(.thread, .thread-list, .thread-container, .thread-input) svg {
+  color: white !important;
+}
+
+/* Style buttons in chat */
+:is(.thread, .thread-list, .thread-container, .thread-input) button {
+  background-color: #0a0a0a !important;
+  color: white !important;
+}
+
+:is(.thread, .thread-list, .thread-container, .thread-input) button:hover {
+  background-color: #111111 !important;
+}
+
+/* Style thread list items */
+.thread-list-item {
+  border-color: #333333 !important;
+  color: white !important;
+}
+
+.thread-list-item:hover,
+.thread-list-item-active {
+  background-color: #111111 !important;
+}
+
+/* Override default white background */
+body {
+  background-color: #000000 !important;
+  color: white !important;
+}
+
+/* Force black background for main containers */
+html {
+  background-color: #000000 !important;
+}
+
+/* Override any conflicting background colors */
+#__next, [data-nextjs-scroll-focus-boundary] {
+  background-color: #000000 !important;
+}
+
+/* Prose (Markdown) styles for chat */
+.prose {
+  max-width: 100%;
+  color: white;
+}
+
+.prose a {
+  color: #3b82f6 !important;
+  text-decoration: underline;
+}
+
+.prose p {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+.prose ul {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  list-style-type: disc;
+  padding-left: 1.5em;
+}
+
+.prose ol {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  list-style-type: decimal;
+  padding-left: 1.5em;
+}
+
+.prose li {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  color: white;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose h1 {
+  font-size: 1.875rem;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+}
+
+.prose hr {
+  border-color: #333333;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.prose blockquote {
+  border-left: 3px solid #333333;
+  padding-left: 1em;
+  font-style: italic;
+  margin: 1em 0;
+}
+
+.prose code {
+  background-color: #111111;
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+}
+
+.prose pre {
+  background-color: #111111;
+  border-radius: 3px;
+  padding: 1em;
+  overflow-x: auto;
+  margin: 1em 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Ensure the first element in markdown has no top margin */
+.prose > :first-child {
+  margin-top: 0;
+}
+
+/* Ensure the last element in markdown has no bottom margin */
+.prose > :last-child {
+  margin-bottom: 0;
+}
+
+/* Hide scrollbar but maintain functionality */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari and Opera */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+  scrollbar-width: none;  /* For Firefox */
+}
+
+/* Debug styles for slash command menu to make it more visible */
+[data-slash-menu="true"] {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5) !important;
+  border: 1px solid rgba(59, 130, 246, 0.5) !important;
+}
+
+/* Add typing indicator animation styles */
+.dot-loader {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dot-loader .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  animation: dot-pulse 1.5s infinite ease-in-out;
+}
+
+.dot-loader .dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dot-loader .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot-loader .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dot-pulse {
+  0%, 100% {
+    transform: scale(0.7);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Custom scrollbar styling for Kanban columns */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(39, 39, 42, 0.3);
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(82, 82, 91, 0.5);
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(113, 113, 122, 0.6);
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(82, 82, 91, 0.5) rgba(39, 39, 42, 0.3);
+}
