@@ -4,13 +4,13 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, MessageSquare, Users, Target, Sparkles, Brain, BookOpen, Award, ChevronLeft, Menu, Briefcase, Phone, ExternalLink, Globe, User, TrendingUp, BarChart3, Zap, CheckCircle, Star, Building, Lightbulb, Shield } from 'lucide-react';
-import { useAnythingLLMClausen } from '@/hooks/useAnythingLLMClausen';
+// import { useAnythingLLMClausen } from '@/hooks/useAnythingLLMClausen';
 
 const ClausenAdviceRedesign = () => {
   const [activeSection, setActiveSection] = useState<string>('home');
   
   // Initialize AnythingLLM chat widget for Clausen
-  useAnythingLLMClausen();
+  // useAnythingLLMClausen();
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
@@ -33,8 +33,7 @@ const ClausenAdviceRedesign = () => {
               <a href="/malte-clausen" className="text-gray-700 hover:text-blue-600 font-medium">About Malte</a>
               <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2">
                 Schedule Demo
-              </Button>
-            </div>
+              </Button>  
           </div>
         </div>
       </nav>
